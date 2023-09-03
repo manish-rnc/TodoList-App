@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>TodoList</title>
+</head>
+<body>
+  <h1>TODAY</h1>
+  <h2><%= date %></h2>
+
+    <% if(locals.tasks) { %>
+      <form action="/delete" method="POST">
+        <%  tasks.forEach(task => { %>
+          <div class="item">
+           <span><input type="checkbox" name="checkbox" value="<%= task._id %>" onchange="this.form.submit()"> &nbsp; <%= task.name  %></span>
+          </div>
+        <% });  %>
+      </form>
+    <% } %>
+
+    <div class="login-box">
+      <form action="/" method="POST">
+        <div class="user-box">
+          <input type="text" name="newTask" placeholder="Enter Task">
+        </div>
+        <button type="submit" name="list" value="<%= listTitle %>">Add</button>
+      </form>
+    </div>
+    
+  <footer>Copyright @ 2023</footer>
+</body>
+</html>
